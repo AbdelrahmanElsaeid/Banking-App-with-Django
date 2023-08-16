@@ -1,0 +1,829 @@
+// Responsive Area
+@media (max-width: 1799px) {
+	.banner-section.index .overlay .shape-area img {
+		width: 10%;
+	}
+	.counter-section::before {
+		width: 94%;
+		left: 3%;
+	}
+	.banner-section.corporate-card .overlay{
+		background-size: 35%;
+		background-position: left bottom, right 80px bottom;
+	}
+	.banner-section.corporate-card.budgeting-analytics .overlay {
+		background-size: 45%;
+	}
+	.banner-section.corporate-card.subscriptions .overlay .banner-content,
+	.banner-section.corporate-card .overlay .banner-content,
+	.banner-section.payment.two .overlay .banner-content,
+	.banner-section.payment .overlay .banner-content,
+	.banner-section.corporate-card.budgeting-analytics .overlay .banner-content {
+		padding: 200px 0 120px;
+	}
+	.banner-section.payment.two .overlay,
+	.banner-section.payment .overlay {
+		background-size: 45%;
+	}
+}
+
+@media (max-width: 1499px) {
+	.banner-section .overlay .shape-area {
+		.obj-1, .obj-2, .obj-4 {
+			display: none;
+		}
+	}
+	.call-action.earn-when-spend {
+		background-size: 20%;
+	}
+	.banner-section.payment.two .overlay,
+	.banner-section.payment .overlay {
+		background-size: 45%;
+		background-position: right;
+	}
+	.banner-section.invoice-management .overlay .shape-area img {
+		width: 20%;
+	}
+}
+
+@media (max-width: 1399px) {
+	.banner-section .overlay .banner-content .container .content-shape .obj-1 {
+		left: calc(45%);
+	}
+	.banner-section .overlay .banner-content .main-content .bottom-area .cmn-btn{
+		margin-bottom: 20px;
+		&.active{
+			margin-bottom: 0;
+		}
+	}
+	.blog-section .single-post .thumbnail img {
+		max-width: 100%;
+		height: 100%;
+	}
+	.blog-section .col-lg-12 .single-post .thumbnail,
+	.blog-section .col-lg-12 .single-post .blog-text{
+		width: 50%;
+	}
+	.banner-section.blog-details .overlay .banner-content {
+		padding-top: 210px;
+	}
+	.banner-section.business-account.integrations .overlay form {
+		width: 70%;
+	}
+	.banner-section.invoice-management.rewards .overlay .banner-content,
+	.banner-section.invoice-management .overlay .banner-content {
+		padding: 200px 0 120px;
+	}
+	.banner-section.invoice-management .overlay .shape-area img {
+		width: 14%;
+	}
+	.more-features .overlay{
+		background-image: none;
+	}
+}
+
+@media (max-width: 1199px) {
+	h1, h1>a {
+		font-size: 57px;
+		line-height: 74.1px;
+		margin-top: -16px;
+	}
+	h2, h2>a {
+		font-size: 43px;
+		line-height: 55.9px;
+		margin-top: -10px;
+	}
+	.preloader {
+		background-size: 30%;
+	}
+	.header-section .navbar .navbar-collapse .navbar-nav .nav-item .nav-link, 
+	.header-section .navbar .navbar-collapse .navbar-nav .nav-item .dropdown-item {
+		font-size: 16px;
+	}
+	.banner-section .overlay .banner-content {
+		padding: 220px 0 230px;
+	}
+	.banner-section.inner-banner .overlay .banner-content {
+		padding: 215px 0 100px;
+	}
+
+	.how-it-works .single-item.second::after,
+	.banner-section .overlay .banner-content .container .content-shape img{
+		display: none;
+	}
+	.app-download .image-area,
+	.global-payment .image-area{
+		margin-top: 60px;
+		text-align: center;
+		img{
+			width: 80%;
+
+		}
+	}
+	.how-it-works .single-item::after {
+		right: calc(-10% - 10px);
+		top: calc(60% - 20px);
+	}
+	.how-it-works .cus-mar{
+		margin-bottom: -30px;
+	}
+	.how-it-works .single-item{
+		margin-bottom: 30px;
+	}
+	.testimonials .slick-initialized .slick-slide{
+		opacity: 1;
+	}
+	.footer-section .newsletter{
+		background-image: none;
+	}
+	.banner-section.inner-banner .shape-area .shape-1 {
+		width: 35%;
+	}
+	.blog-details-section .authors-area{
+		display: grid !important;
+		padding: 40px;
+	}
+	.blog-details-section .authors-area .right-item {
+		margin: 0;
+		margin-top: 30px;
+	}
+	.banner-section.business-account .banner-img-bottom {
+		margin-top: -190px;
+	}
+	.banner-section.inner-banner.career-details .overlay .banner-content {
+		padding: 215px 0 150px;
+	}
+	.error {
+		background-size: contain;
+	}
+	.faqs-section .accordion .accordion-item .accordion-button {
+		padding-right: 70px;
+	}
+	.banner-section.business-account.integrations .overlay form {
+		width: 80%;
+	}
+	.login-reg .sec-img{
+		width: 70%;
+		margin: auto;
+		margin-top: 30px;
+		img{
+			max-width: 100%;
+		}
+	}
+	.features-built .image-area{
+		width: 70%;
+		margin: auto;
+		margin-top: 30px;
+		img{
+			max-width: 100%;
+		}
+	}
+	.login-reg {
+		margin-top: 50px;
+	}
+	.call-action.security .main-content {
+		background-size: 35%;
+	}
+}
+
+@media (max-width: 991px) {
+	// Normalize
+	h1, h1>a {
+		font-size: 57px;
+		line-height: 68.4px;
+		margin-top: -16px;
+	}
+	
+	h2, h2>a {
+		font-size: 43px;
+		line-height: 51.6px;
+		margin-top: -10px;
+	}
+	
+	h3, h3>a {
+		font-size: 32px;
+		line-height: 38.4px;
+		margin-top: -8px;
+	}
+	
+	h4, h4>a {
+		font-size: 24px;
+		line-height: 28px;
+		margin-top: -6px;
+	}
+	
+	h5, h5>a {
+		font-size: 18px;
+		line-height: 22px;
+		margin-top: -4px;
+	}
+	
+	h6, h6>a, table thead tr th, a, p, span, li {
+		font-size: 16px;
+		line-height: 22px;
+	}
+	
+	.section-header {
+		margin-bottom: 40px;
+	}
+	
+	.title {
+		margin-bottom: 20px;
+	}
+	
+	.xxlr{
+		font-size: 20px;
+		line-height: 28px;
+	}
+	.xlr{
+		font-size: 18px;
+		line-height: 25.5px;
+	}
+
+	// Header Responsive
+	.header-section .navbar-toggler {
+		display: inline-block;
+	}
+    .header-section .navbar .navbar-brand {
+		margin-top: -5px;
+		width: 35%;
+	}
+	.header-section .navbar .navbar-brand img {
+		max-width: initial;
+	}
+	.header-section .navbar .navbar-collapse .navbar-nav {
+		height: 200px;
+		margin: 20px 0;
+    	overflow-y: auto;
+		margin-bottom: 10px;
+	}
+	.header-section .navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu .dropend .dropdown-menu {
+		left: 60px;
+	}
+	.header-section .nav-item.main-navbar .main-menu .sub-navbar .sub-menu{
+		right: 0;
+	}
+	.header-section .navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu.show {
+		display: inline-block;
+		margin-left: 130px;
+	}
+	.header-section .navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu {
+		display: none;
+	}
+	.header-section .navbar .navbar-collapse .navbar-nav .nav-item{
+		padding: 8px 0;
+	}
+	.header-section .nav-item.dropdown .dropdown-menu {
+		position: initial;
+	}
+	.header-section .navbar .navbar-collapse .right-area .lang{
+		display: none !important;
+	}
+	.header-section .navbar .navbar-collapse .right-area{
+		margin-left: 0;
+	}
+	// End Header
+
+	.banner-section .overlay .banner-content .send-money .currency-area {
+		padding: 15px 20px;
+	}
+	.banner-section .overlay .banner-content .send-money {
+		padding: 15px;
+	}
+	.testimonials .testimonials-carousel {
+		padding-bottom: 40px;
+	}
+	.how-it-works .single-item.first::after{
+		display: none;
+	}
+	.banner-section.about-us .overlay {
+		background-position: right top;
+	}
+	.preloader {
+		background-size: 40%;
+	}
+	.banner-section.blog-details .overlay {
+		background-position: top 60px center;
+	}
+	.call-action.earn-when-spend {
+		background-size: 15%;
+	}
+	.banner-section.business-account .overlay .banner-content {
+		padding: 200px 0 365px;
+	}
+	.banner-section.business-account .banner-img-bottom {
+		margin-top: -140px;
+	}
+	.banner-section.inner-banner.career-details .overlay .banner-content {
+		padding: 170px 0 140px;
+	}
+	.supported-country ul {
+		justify-content: center;
+		gap: 15px;
+		img{
+			max-width: 80%;
+		}
+	}
+	.help-category {
+		margin-top: 70px;
+	}
+	.banner-section.business-account.integrations .overlay {
+		background-position: right top;
+	}
+	.banner-section.business-account.integrations .overlay form {
+		width: 100%;
+	}
+	.login-reg {
+		margin-top: 80px;
+	}
+	.accept-payments .left-side{
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 767px) {
+	.banner-section.about-us .overlay .banner-content,
+	.banner-section .overlay .banner-content {
+		padding: 200px 0 190px;
+	}
+	.banner-section.corporate-card .overlay .banner-content,
+	.banner-section.payment.two .overlay .banner-content,
+	.banner-section.corporate-card.subscriptions .overlay .banner-content,
+	.banner-section.payment .overlay .banner-content,
+	.banner-section.corporate-card.budgeting-analytics .overlay .banner-content {
+		padding: 170px 0 70px;
+	}
+	.banner-section.corporate-card .overlay,
+	.banner-section.corporate-card.subscriptions .overlay,
+	.banner-section.corporate-card.expense .overlay,
+	.banner-section.corporate-card.budgeting-analytics .overlay{
+		background-image: unset;
+	}
+	.counter-section .single-area {
+		margin-bottom: 30px;
+	}
+	.counter-section {
+		padding: 50px 30px 10px;
+	}
+
+	.banner-section .overlay .banner-content .send-money{
+		margin-top: 40px;
+	}
+	.banner-section.about-us .banner-img-bottom {
+		margin-top: -180px;
+	}
+	.banner-section.about-us .magnific-area .mfp-iframe {
+		width: 90px;
+		height: 90px;
+	}
+	.banner-section.about-us .magnific-area .mfp-iframe::before {
+		width: 124px;
+		height: 124px;
+	}
+	.banner-section.about-us .stars-info .single-box .icon-box {
+		width: 100px;
+		height: 100px;
+	}
+	.blog-details-section .authors-area .left-area{
+		text-align: center;
+	}
+	.our-values .single-box {
+		padding: 30px;
+		margin-bottom: 30px;
+	}
+	.blog-section .single-post{
+		display: grid !important;
+	}
+	.blog-section .single-post .thumbnail img{
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	.blog-section .single-post .thumbnail img,
+	.blog-section .col-lg-12 .single-post .thumbnail,
+	.blog-section .col-lg-12 .single-post .blog-text{
+		width: 100%;
+	}
+	.blog-section .top-area{
+		display: grid !important;
+	}
+	.banner-section.inner-banner .shape-area img {
+		display: none;
+	}
+	.partner-perks .nav-tabs li .cmn-btn,
+	.help-center-section .nav-tabs-area .nav-tabs li .cmn-btn,
+	.pricing-plan .nav-tabs-area .nav-tabs li .cmn-btn,
+	.current-openings .nav-tabs li .cmn-btn,
+	.blog-section .nav-tabs .cmn-btn {
+		padding: 10px 15px;
+	}
+	.blog-details-section .authors-area .right-item {
+		.top-area{
+			display: grid !important;
+		}
+	}
+	.blog-details-section .main-content .head-area{
+		display: grid !important;
+		margin-bottom: -35px;
+		.right-area{
+			margin-top: 20px;
+		}
+		a{
+			margin-left: 0;
+			margin-right: 15px;
+		}
+	}
+	.blog-details-section .main-content .social-link {
+		margin-bottom: 20px;
+		a{
+			margin-left: 0;
+			margin-right: 15px;
+		}
+	}
+	.accept-payments .image-area,
+	.earn-cashback.features .image-area,
+	.features-built .image-area,
+	.secure-integrated .sec-image,
+	.stay-control .sec-image,
+	.earn-cashback .sec-image,
+	.multi-currency .sec-image,
+	.business-account .sec-image,
+	.global-payment.features .sec-image,
+	.earn-cashback.features .sec-image{
+		width: 70%;
+		margin: auto;
+		margin-top: 30px;
+		img{
+			max-width: 100%;
+		}
+	}
+	.partner-perks .cus-mar{
+		justify-content: center;
+	}
+	.call-action.earn-when-spend {
+		background-size: 10%;
+	}
+	.banner-section.business-account .banner-img-bottom {
+		margin-top: -40px;
+	}
+	.banner-section.business-account .overlay .banner-content {
+		padding: 170px 0 200px;
+	}
+	.banner-section.business-account .banner-img-bottom .img-area .right-img {
+		width: 70%;
+	}
+	.banner-section.business-account .overlay {
+		background-size: 55%;
+	}
+	.banner-section.inner-banner.career-details .banner-bottom .top-box {
+		padding: 40px 30px 30px;
+		display: grid !important;
+		.right-box{
+			margin-top: 20px;
+		}
+	}
+	.error {
+		padding: 290px 0 50px;
+		background-size: cover;
+	}
+	.blog-details-section .authors-area {
+		padding: 30px;
+	}
+	.features-built .single-area .icon-area img{
+		max-width: unset;
+	}
+	.help-category .tab-content {
+		padding: 30px;
+		margin-top: 25px;
+	}
+	.blog-details-section .authors-area .profile-item{
+		justify-content: center;
+	}
+	.blog-details-section .authors-area .right-item .top-area {
+		justify-content: center !important;
+	}
+	.banner-section.business-account.integrations .overlay {
+		background-size: cover;
+	}
+	.banner-section.business-account.integrations .banner-img-bottom {
+		margin-top: -180px;
+	}
+	.banner-section.business-account.integrations .overlay form .cmn-btn {
+		width: 50%;
+	}
+	.banner-section.business-account.integrations .overlay .banner-content {
+		padding: 208px 0 200px;
+	}
+	.banner-section.invoice-management .overlay .shape-area img {
+		display: none;
+	}
+	.banner-section.payment.two .overlay,
+	.banner-section.payment .overlay{
+		background-image: none;
+	}
+}
+
+@media (max-width: 575px) {
+    h1, h1>a {
+        font-size: 40px;
+        line-height: 46px;
+		margin-top: -9px;
+    }
+    h2, h2>a {
+        font-size: 30px;
+        line-height: 36px;
+		margin-top: -7px;
+    }
+    h3, h3>a {
+        font-size: 24px;
+        line-height: 28px;
+		margin-top: -6px;
+    }
+    h4, h4>a {
+        font-size: 18px;
+        line-height: 22px;
+		margin-top: -4px;
+    }
+	a, p, span, li, .cmn-btn, thead tr th, tbody tr th, tbody tr td, input, label, textarea, h6, h6>a{
+		font-size: 15px;
+        line-height: 19px;
+    }
+	.section-header {
+		margin-bottom: 35px;
+	}
+	.title {
+		margin-bottom: 15px;
+	}
+	.xxlr {
+		font-size: 18px;
+		line-height: 25.5px;
+	}
+	.xlr {
+		font-size: 16px;
+		line-height: 22.4px;
+	}
+	.header-section .navbar {
+		padding: 20px 15px;
+	}
+	.banner-section.about-us .overlay .banner-content,
+	.banner-section .overlay .banner-content {
+		padding: 170px 0 180px;
+	}
+	.banner-section.inner-banner .overlay .banner-content{
+		padding: 170px 0 65px;
+	}
+	.banner-section.blog-details .overlay .banner-content {
+		padding: 170px 0 60px;
+		padding-top: 210px;
+	}
+	.footer-section .footer-area .menu-item {
+		margin-bottom: 20px;
+		li{
+			margin: 0 10px !important;
+		}
+	}
+	.footer-section .newsletter {
+		padding: 40px 30px;
+		form {
+			width: 100%;
+		}
+	}
+	.counter-section {
+		padding: 40px 30px 5px;
+	}
+	.how-it-works .col-6,
+	.our-solutions .col-6,
+	.global-payment .col-6{
+		width: 70% !important;
+		margin: auto;
+	}
+	.banner-section.about-us .stars-info {
+		margin-bottom: -30px;
+	}
+	.banner-section.about-us .stars-info .single-box{
+		margin-bottom: 30px;
+	}
+	.our-team .cus-mar{
+		text-align: center;
+	}
+	.our-team .single-box{
+		display: inline-block;
+	}
+	.banner-section.blog-details .overlay {
+		background-position: top 80px center;
+		background-size: 100%;
+	}
+	.banner-section.business-account .overlay ul {
+		display: grid;
+		justify-content: center;
+		margin-top: 10px;
+		text-align: start;
+		li{
+			margin-top: 15px;
+		}
+	}
+	.job-details .left-area{
+		margin-bottom: 30px;
+	}
+	.our-solutions .single-item img,
+	.more-features .overlay .single-item img{
+		width: 25%;
+	}
+	.banner-section.about-us .stars-info .single-box .icon-box {
+		width: 80px;
+		height: 80px;
+	}
+	.global-payment .single-item img{
+		width: 20%;
+	}
+	.supported-country ul {
+		gap: 10px;
+		img{
+			max-width: 60%;
+		}
+	}
+	.how-it-works.second .single-item h3 {
+		min-width: 60px;
+		min-height: 60px;
+	}
+	.faqs-section.help-category .accordion .accordion-item .accordion-header {
+		.accordion-button {
+			padding-left: 30px;
+		}
+		&:after{
+			display: none;
+		}
+	}
+	.help-category .tab-content {
+		padding: 20px;
+	}
+	.banner-section.business-account.integrations .overlay .banner-content {
+		padding: 178px 0 200px;
+	}
+	.banner-section.invoice-management.rewards .overlay .banner-content,
+	.banner-section.invoice-management .overlay .banner-content {
+		padding: 170px 0 80px;
+	}
+	.accept-payments .overlay{
+		background-image: none;
+	}
+	.how-it-works .single-item h5 {
+		margin: 12px 0 16px;
+	}
+	.global-payment .single-item h5,
+	.our-solutions .single-item h5,
+	.global-payment .single-item h5,
+	.more-features .overlay .single-item h5 {
+		margin: 16px 0 18px;
+	}
+	.call-action.security .main-content{
+		background-image: none;
+		padding: 50px 30px;
+	}
+}
+
+@media (max-width: 480px) {
+	.footer-section .menu-item {
+		display: grid;
+		justify-content: center;
+		text-align: center;
+	}
+	.faqs-section .accordion .accordion-item .accordion-button {
+		padding: 15px 15px;
+		padding-right: 70px;
+	}
+	.faqs-section .accordion .accordion-item .accordion-collapse .accordion-body{
+		padding: 15px 15px;
+	}
+	.faqs-section .accordion .accordion-item .accordion-button::after {
+		right: 20px;
+	}
+	.faqs-section .accordion .accordion-item .accordion-button::before {
+		right: 15px;
+	}
+	.testimonials .single-slide .single-content {
+		padding: 24px 15px 20px;
+	}
+	.call-action.earn-when-spend ul {
+		column-count: 2;
+		display: block;
+		img{
+			width: 50%;
+		}
+	}
+	.partner-perks .col-9,
+	.our-solutions .col-6,
+	.pricing-plan .col-9,
+	.global-payment .col-6,
+	.global-payment.features .col-6,
+	.our-solutions.payment .col-6,
+	.our-solutions.business-model .col-6,
+	.our-values.perks .col-8{
+		width: 100% !important;
+	}
+	.banner-section.business-account.integrations .overlay form .cmn-btn {
+		width: 60%;
+		padding: 10px;
+	}
+	.blog-section .single-post .blog-text .bottom-area {
+		padding-top: 20px;
+		margin-top: 20px;
+	}
+	.preloader {
+		background-size: 65%;
+	}
+	.blog-section.details .section-text{
+		display: grid !important;
+		a{
+			margin-top: 20px;
+		}
+	}
+	.help-center-section .tab-content .col-9{
+		width: 100% !important;
+		margin: auto;
+	}
+	.call-action.earn-when-spend .btn-area a{
+		margin: 5px 0;
+	}
+	.call-action .btn-area .cmn-btn {
+		margin: 5px;
+	}
+	.banner-section.inner-banner.career-details ul{
+		display: grid;
+	}
+	.current-openings .single-box ul {
+		margin: 18px 0 17px;
+		display: grid;
+	}
+	.banner-section.inner-banner.career-details ul li,
+	.banner-section.inner-banner.career-details ul li:first-child,
+	.current-openings .single-box ul li,
+	.current-openings .single-box ul li:first-child {
+		list-style: disc;
+		margin-left: 0;
+		list-style-position: inside;
+	}
+	.current-openings .single-box .right-box a {
+		width: 50px;
+		height: 50px;
+	}
+	.faqs-section.help-category .accordion .accordion-item .accordion-header .accordion-button {
+		padding-left: 15px;
+	}
+}
+
+@media (max-width: 375px) {
+	.about .col-6{
+		width: 100% !important;
+	}
+
+	.banner-section .overlay .banner-content .send-money .nice-select .current::before{
+		background-image: unset !important;
+	}
+	.banner-section .overlay .banner-content .send-money .currency-area .right-side .nice-select {
+		padding: 30px 50px 30px 15px;
+	}
+	.banner-section .overlay .banner-content .send-money .calculation .single-area .left-area {
+		min-width: 60%;
+	}
+	.our-values .single-box {
+		padding: 20px;
+		margin-bottom: 20px;
+	}
+	.our-values.perks .single-box .text-box {
+		margin-left: 0;
+	}
+	.our-values .single-box .text-box {
+		margin-left: 20px;
+	}
+	.location .single-box {
+		padding: 25px 20px 15px;
+		margin-bottom: 20px;
+	}
+	.location .single-box .head-area .img-box {
+		margin-right: 20px;
+	}
+	.blog-section .single-post .blog-text {
+		padding: 20px;
+	}
+	.blog-details-section .main-content {
+		padding: 35px 20px 0;
+	}
+	.blog-details-section .authors-area .profile-img {
+		text-align: center;
+		img {
+			max-width: 60%;
+		}
+	}
+	.banner-section.business-account .banner-img-bottom .img-area .right-img {
+		bottom: 30px;
+	}
+	.pricing-plan .pricing-single .pricing-body ul {
+		padding: 20px 15px;
+	}
+	.banner-section.business-account.integrations .banner-img-bottom {
+		margin-top: -135px;
+	}
+	.banner-section.business-account.integrations .overlay .banner-content {
+		padding: 178px 0 150px;
+	}
+}

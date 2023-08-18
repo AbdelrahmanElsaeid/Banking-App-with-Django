@@ -6,6 +6,28 @@ from django.contrib import messages
 # Create your views here.
 
 
+def account(request):
+    user = request.user
+
+    if request.user.is_authenticated:
+        try:
+            kyc = KYC.objects.get(user=user)
+        except:
+            messages.warning(request, "You Need To Submit YOur KYC")
+            return redirect("account:kyc-form")
+
+        account = Account.objects.get(user=user)
+    else:
+        messages.warning(request, "You Need To Login")
+        return redirect("userauths:sign-in")
+    context = {
+        'account':account,
+        'kyc':kyc,
+    }
+    return render(request, 'account/account.html', context)
+
+
+
 def kyc_registration(request):
     user = request.user
     account = Account.objects.get(user=user)

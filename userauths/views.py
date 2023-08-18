@@ -48,6 +48,11 @@ def LoginView(request):
                 return redirect("userauths:sign-in")
         except:
             messages.warning(request, "User does not exist")
+
+    if request.user.is_authenticated:
+        messages.warning(request, "You Are Already Logged In")
+        return redirect("account:account")
+
     return render(request, "userauths/sign-in.html")        
 
 

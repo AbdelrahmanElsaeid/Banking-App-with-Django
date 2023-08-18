@@ -1,0 +1,408 @@
+{% extends 'partials/dashboard-base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    
+    <section class="dashboard-section body-collapse account">
+        <div class="overlay pt-120">
+            <div class="container-fruid">
+                <div class="main-content">
+                    <div class="row">
+                        <div class="col-xxl-3 col-xl-4 col-md-6">
+                            <div class="owner-details">
+                                <div class="profile-area">
+                                    <div class="profile-img">
+                                        <img style="width: 100px; hight: 100px; border-radius: 50%" src="{{kyc.image.url}}" alt="image">
+                                    </div>
+                                    <div class="name-area">
+                                        <h6>{{kyc.full_name|title}}</h6>
+                                        {% if account.account_status == "in-active" %}
+                                        <p class="active-status text danger">{{account.account_status|title}}</p>
+                                        {% endif %}
+                                        {% if account.account_status == "active" %}
+                                        <p class="active-status ">{{account.account_status|title}}</p>
+                                        {% endif %}
+                                        {% if account.account_status == "pending" %}
+                                        <p class="active-status text warning">{{account.account_status|title}}</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="owner-info">
+                                    <ul>
+                                        <li>
+                                            <p>Account Num:</p>
+                                            <span class="mdr">{{account.account_number}}</span>
+                                        </li>
+                                        <li>
+                                            <p>Pin Num:</p>
+                                            <span class="mdr">{{account.pin_number}}</span>
+                                        </li>
+                                        <li>
+                                            <p>Joined:</p>
+                                            <span class="mdr">{{account.date|date:"d M, Y" }}</span>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="owner-action">
+                                    {% if request.user.is_authenticated %}
+                                        <a href="{%  url 'userauths:sign-out' %}">
+                                            <img src="{% static 'assets1/images/icon/logout.png' %}" alt="image">
+                                            Logout
+                                        </a>
+                                    {% endif %}
+                                    <a href="javascript:void(0)" class="delete">
+                                        <img src="{% static 'assets1/images/icon/delete-2.png' %}" alt="image">
+                                        Delete Account
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-9 col-xl-8">
+                            <div class="tab-main">
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button" role="tab" aria-controls="account" aria-selected="true">Account</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="false">Security</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" role="tab" aria-controls="payment" aria-selected="false">Payment Methods</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="notification-tab" data-bs-toggle="tab" data-bs-target="#notification" type="button" role="tab" aria-controls="notification" aria-selected="false">Notification</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content mt-40">
+                                    <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                                        <div class="upload-avatar">
+                                            <div class="avatar-left d-flex align-items-center">
+                                                <div class="profile-img">
+                                                    <img style="width: 100px; hight=]: 100px; border-radius: 50%" src="{{kyc.image.url}}" alt="image">
+                                                </div>
+                                                <div class="instraction">
+                                                    <h6>Your Avatar</h6>
+                                                </div>
+                                            </div>
+                                            <div class="avatar-right">
+                                                <div class="file-upload">
+                                                    <div class="right-area">
+                                                        <label class="file">
+                                                            <input type="file">
+                                                            <span class="file-custom"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form action="#">
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="fName">Full Name</label>
+                                                        <input type="text" id="fName" readonly placeholder="Alfred" value="{{kyc.full_name}}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="lName">Email</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.user.email }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="lName">Gender</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.gender }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="single-input">
+                                                        <label for="lName">Marital Status</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.marital_status }}">
+                                                    </div>
+                                                </div>
+                                               
+                                                <div class="col-md-4">
+                                                    <div class="single-input">
+                                                        <label for="lName">Date Of Birth</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.date_of_birth|date:'d M, Y' }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="single-input">
+                                                        <label for="lName">Mobile</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.mobile}}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="single-input">
+                                                        <label for="lName">Identity Type</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.identity_type }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="single-input">
+                                                        <label for="lName">Country</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.country }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="single-input">
+                                                        <label for="lName">State</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.state }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="single-input">
+                                                        <label for="lName">City</label>
+                                                        <input type="text" id="lName" readonly placeholder="Davis" value="{{ kyc.city }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 " style="padding-top: 50px;">
+                                                    <div class="single-input">
+                                                        <label for="fName">{{ kyc.identity_type }} Image</label>
+    
+                                                        {% if kyc.identity_image %}
+                                                            <img src="{{ kyc.identity_image.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6" style="padding-top: 50px;">
+                                                    <div class="single-input">
+                                                        <label for="fName">Signature Image</label>
+    
+                                                        {% if kyc.signature %}
+                                                            <img src="{{ kyc.signature.url }}" style="width: 100%; height: 200px; border-radius: 10px; object-fit: cover; padding-top: 10px;" alt="">
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <br><br>
+                                                <div class="col-md-12">
+                                                    <div class="btn-border">
+                                                        <button class="cmn-btn" type="submit">Edit KYC</button>
+                                                    </div>
+                                                </div>
+                                            
+                                              
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                                        <div class="single-content authentication d-flex align-items-center justify-content-between">
+                                            <div class="left">
+                                                <h5>Two Factor Authentication</h5>
+                                                <p>Two-Factor Authentication (2FA) can be used to help protect your account</p>
+                                            </div>
+                                            <div class="right">
+                                                <button>Enable</button>
+                                            </div>
+                                        </div>
+                                        <div class="change-pass mb-40">
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <h5>Change Password</h5>
+                                                    <p>You can always change your password for security reasons or reset your password in case you forgot it.</p>
+                                                    <a href="javascript:void(0)">Forgot password?</a>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <form action="#">
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-md-12">
+                                                                <div class="single-input">
+                                                                    <label for="current-password">Current password</label>
+                                                                    <input type="text" id="current-password" placeholder="Current password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="single-input">
+                                                                    <label for="new-password">New password</label>
+                                                                    <input type="text" id="new-password" placeholder="New password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="single-input">
+                                                                    <label for="confirm-password">Confirm New password</label>
+                                                                    <input type="text" id="confirm-password" placeholder="Confirm New password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="btn-border w-100">
+                                                                    <button class="cmn-btn w-100">Update password</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-content additional-security">
+                                            <h5>Additional security</h5>
+                                            <div class="single-setting">
+                                                <div class="left">
+                                                    <h6>SMS recovery</h6>
+                                                    <p>Number ending with 1234</p>
+                                                </div>
+                                                <div class="right">
+                                                    <button class="active">Disable SMS</button>
+                                                </div>
+                                            </div>
+                                            <div class="single-setting">
+                                                <div class="left">
+                                                    <h6>Autheticator App</h6>
+                                                    <p>Google Authenticator</p>
+                                                </div>
+                                                <div class="right">
+                                                    <button>Configure</button>
+                                                </div>
+                                            </div>
+                                            <div class="single-setting">
+                                                <div class="left">
+                                                    <h6>SSL Certificate</h6>
+                                                    <p>Secure Sockets Layer</p>
+                                                </div>
+                                                <div class="right">
+                                                    <button>Configure</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="single-content your-devices">
+                                            <div class="head-item d-flex align-items-center justify-content-between">
+                                                <h5>Your devices</h5>
+                                                <a href="javascript:void(0)">Log out on all devices</a>
+                                            </div>
+                                            <div class="single-setting">
+                                                <div class="left">
+                                                    <div class="icon-area">
+                                                        <img src="{% static 'assets1/images/icon/iphone.png' %}" alt="icon">
+                                                    </div>
+                                                    <div class="text-area">
+                                                        <h6>Iphone 13 Pro Max</h6>
+                                                        <p>New York City · June 20 at 14:00</p>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <button>Log out</button>
+                                                </div>
+                                            </div>
+                                            <div class="single-setting">
+                                                <div class="left">
+                                                    <div class="icon-area">
+                                                        <img src="{% static 'assets1/images/icon/ipad.png' %}" alt="icon">
+                                                    </div>
+                                                    <div class="text-area">
+                                                        <h6>iPad Pro</h6>
+                                                        <p>New York City · June 20 at 14:00</p>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <button>Log out</button>
+                                                </div>
+                                            </div>
+                                            <div class="single-setting">
+                                                <div class="left">
+                                                    <div class="icon-area">
+                                                        <img src="{% static 'assets1/images/icon/imac.png' %}" alt="icon">
+                                                    </div>
+                                                    <div class="text-area">
+                                                        <h6>iMac OSX</h6>
+                                                        <p>New York City · June 20 at 14:00</p>
+                                                    </div>
+                                                </div>
+                                                <div class="right">
+                                                    <button>Log out</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane pb-120 fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                                        <div class="card-area">
+                                            <h6>Linked Payment system</h6>
+                                            <div class="card-content d-flex flex-wrap">
+                                                <div class="single-card">
+                                                    <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                        <img src="{% static 'assets1/images/visa-card.png' %}" alt="image" class="w-100">
+                                                    </button>
+                                                </div>
+                                                <div class="single-card">
+                                                    <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                        <img src="{% static 'assets1/images/paylio-card.png' %}" alt="image" class="w-100">
+                                                    </button>
+                                                </div>
+                                                <div class="single-card">
+                                                    <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                        <img src="{% static 'assets1/images/paypal-card.png' %}" alt="image" class="w-100">
+                                                    </button>
+                                                </div>
+                                                <div class="single-card">
+                                                    <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#transactionsMod">
+                                                        <img src="{% static 'assets1/images/blockchain-card.png' %}" alt="image" class="w-100">
+                                                    </button>
+                                                </div>
+                                                <div class="single-card">
+                                                    <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#addcardMod">
+                                                        <img src="{% static 'assets1/images/add-new.png' %}" alt="image" class="w-100">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="notification" role="tabpanel" aria-labelledby="notification-tab">
+
+                                        <div class="notification-single">
+                                            <h6>Announcements</h6>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-single">
+                                            <h6>Send payment</h6>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-single">
+                                            <h6>Receive a payment</h6>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-single">
+                                            <h6>Request payment</h6>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-single">
+                                            <h6>Have a problem with a payment</h6>
+                                            <label class="switch">
+                                                <input type="checkbox">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                        <div class="notification-single">
+                                            <h6>Special Offers</h6>
+                                            <label class="switch">
+                                                <input type="checkbox" checked>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock content %}

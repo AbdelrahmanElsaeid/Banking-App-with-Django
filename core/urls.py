@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import index
-from .transfare import search_using_account
+from .transfare import search_using_account, AmountTranfare
 
 
 app_name = 'core'
@@ -9,5 +9,7 @@ app_name = 'core'
 
 urlpatterns = [
     path("", index, name='index'),
-    path('search-account/', search_using_account, name='search-account')
+    path('search-account/', search_using_account, name='search-account'),
+    path('amount-transfare/<account_number>/',AmountTranfare , name='amount-transfare')
+
 ]

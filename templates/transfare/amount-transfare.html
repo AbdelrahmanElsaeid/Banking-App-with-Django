@@ -24,18 +24,16 @@
                             <div class="single-user">
                                 <div class="left d-flex align-items-center">
                                     <div class="img-area">
-                                        <img src="{% static 'assets1/images/profile-1.png' %}" alt="image">
+                                        <img style="width: 100px; hight: 100px; border-radius: 50%" src="{{account.user.kyc.image.url}}" alt="image">
                                     </div>
                                     <div class="text-area">
-                                        <p>Herman Tran</p>
-                                        <span class="mdr"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="82cae7f0efe3ecb1b7c2e5efe3ebeeace1edef">[email&#160;protected]</a></span>
+                                        <p>{{account.user.kyc.full_name|title}}</p>
+                                        <p>{{account.account_number|title}}</p>
+                                        <small>{{account.user.email}}</small>
                                     </div>
                                 </div>
                                 <div class="right">
-                                    <a href="javascript:void(0)">
-                                        <i class="icon-g-tick"></i>
-                                        Choose
-                                    </a>
+    
                                     <a href="{% url 'core:search-account' %}">
                                         <i class="icon-h-edit"></i>
                                         Edit
@@ -44,11 +42,12 @@
                             </div>
                         </div>
                     </div>
-                    <form action="#">
+                    <form action="{% url 'core:amount-transfare-Process' account.account_number %}" method = "POST">
+                        {% csrf_token %}
                         <div class="send-banance">
                             <span class="mdr">You Send</span>
                             <div class="input-area">
-                                <input class="xxlr" onkeyup="CalculateBalance()" placeholder="{{ request.user.account.account_balance|intcomma}}"  type="number" id="amount-send">
+                                <input class="xxlr" onkeyup="CalculateBalance()" placeholder="{{ request.user.account.account_balance|intcomma}}" name="amount-send" type="number" id="amount-send">
                                 <select>
                                     <option value="1">USD</option>
                                     <option value="2">USD</option>
@@ -59,6 +58,22 @@
                             <p id="new_balance"></p>
                             <p class="text-danger" id="error-div"></p>
                         </div>
+                        <div class="send-banance">
+                            <span class="mdr">Payment Decsription</span>
+                            <div class="input-area">
+                                <input class="xxlr" onkeyup="CalculateBalance()" placeholder="payment for fees" name="description" type="text" >
+                                <select>
+                                    <option value="1">USD</option>
+                                    <option value="2">USD</option>
+                                    <option value="3">USD</option>
+                                </select>
+                            </div>
+                          
+                        </div>
+
+
+
+
                         <script>
                             function CalculateBalance(){
                                 let available_balance = "{{ request.user.account.account_balance }}" 
@@ -97,7 +112,7 @@
                         </ul>
                         <div class="footer-area mt-40">
                             <a href="pay-step-1.html">Previous Step</a>
-                            <a href="pay-step-3.html" class="active">Next</a>
+                            <button type="submit" style="padding: 10px 30px; border-radius: 10px; background: rgb(98, 0, 255); color: #fff;" class="active">Next</button>
                         </div>
                     </form>
                 </div>

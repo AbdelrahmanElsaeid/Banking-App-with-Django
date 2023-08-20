@@ -3,7 +3,7 @@ from django.contrib import messages
 from account.models import Account
 from django.db.models import Q
 from .models import Transaction
-
+from decimal import Decimal
 
 
 def search_using_account(request):
@@ -58,7 +58,7 @@ def AmountTranfareProcess(request, account_number):
         amount = request.POST.get("amount-send")
         description = request.POST.get("description")
 
-        if sender_account.account_balance > 0 and amount:
+        if sender_account.account_balance >= Decimal(amount):
             new_transaction = Transaction.objects.create(
                 user = request.user,
                 amount = amount,
@@ -132,7 +132,7 @@ def TransfarProcess(request,account_number, transaction_id):
             reciver_account.save()
 
             messages.success(request, "Transfar Successfull.")
-            return redirect("account:account")
+            return redirect("core:transfar-completed" ,account.account_number ,transaction.transaction_id)
         else:
             messages.warning(request, "Incorrect Pin Number.")
             return redirect("core:transfare-confirmation",account.account_number ,transaction.transaction_id)
@@ -141,3 +141,17 @@ def TransfarProcess(request,account_number, transaction_id):
         messages.warning(request, "An Error occured, Try again later.")
         return redirect("account:account")    
 
+
+
+def TransfarCompleted(request ,account_number, transaction_id):
+    try:
+        account = Account.objects.get(account_number=account_number)
+        transaction = Transaction.objects.get(transaction_id=transaction_id)
+
+    except:
+        messages.warning(request, 'Transfare does not exists')
+        return redirect("account:account")
+    context = {'account':account,
+               'transaction':transaction
+               } 
+    return render(request, 'transfare/transfar-completed.html', context)    

@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import index
 from .transfare import search_using_account, AmountTranfare, AmountTranfareProcess,TransactionConfirmation,TransfarProcess, TransfarCompleted
-
+from .transaction import transaction_list
 
 app_name = 'core'
 
@@ -15,6 +15,14 @@ urlpatterns = [
     path('transfare-confirm/<account_number>/<transaction_id>/',TransactionConfirmation , name='transfare-confirmation'),
     path('transfare-process/<account_number>/<transaction_id>/',TransfarProcess , name='transaction-process'),
     path('transfare-completed/<account_number>/<transaction_id>/',TransfarCompleted , name='transfar-completed'),
+
+
+
+    #transaction
+
+
+
+    path('transaction/',transaction_list, name='transaction' )
 
 
 ]

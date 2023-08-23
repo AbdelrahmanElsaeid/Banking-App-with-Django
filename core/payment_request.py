@@ -80,3 +80,29 @@ def AmountRequestProcess(request, account_number):
     else:
         messages.warning(request, 'Error Occured, Try again later .')
         return redirect("account:account")
+    
+
+
+
+
+
+
+def RequestConfirmation(request, account_number, transaction_id):
+    try:
+        account = Account.objects.get(account_number=account_number)
+        transaction = Transaction.objects.get(transaction_id=transaction_id)
+    except:
+        messages.warning(request, 'Transaction Does not exists')
+        return redirect('account:account') 
+
+
+    context = {'account':account,
+               'transaction':transaction
+               }       
+    
+    return render(request, 'payment_request/request-confirmation.html', context)
+
+
+
+
+

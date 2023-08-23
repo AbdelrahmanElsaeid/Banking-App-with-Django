@@ -92,7 +92,7 @@ def RequestConfirmation(request, account_number, transaction_id):
         account = Account.objects.get(account_number=account_number)
         transaction = Transaction.objects.get(transaction_id=transaction_id)
     except:
-        messages.warning(request, 'Transaction Does not exists')
+        messages.warning(request, 'Request Does not exists')
         return redirect('account:account') 
 
 
@@ -102,6 +102,50 @@ def RequestConfirmation(request, account_number, transaction_id):
     
     return render(request, 'payment_request/request-confirmation.html', context)
 
+
+
+
+
+def RequestFinialProcess(request,account_number, transaction_id):
+    account = Account.objects.get(account_number=account_number)
+    transaction = Transaction.objects.get(transaction_id=transaction_id)
+
+
+    sender_account = request.user.account
+    
+    completed = False
+    if request.method=="POST":
+        pin_num = request.POST.get('pin-number')
+
+
+        if pin_num == sender_account.pin_number:
+
+            transaction.status = "completed"
+            transaction.save()
+            messages.success(request, "Request Successfull.")
+            return redirect("core:request-completed" ,account.account_number ,transaction.transaction_id)
+        else:
+            messages.warning(request, "Incorrect Pin Number.")
+            return redirect("core:request-confirmation",account.account_number ,transaction.transaction_id)
+        
+    else:
+        messages.warning(request, "An Error occured, Try again later.")
+        return redirect("account:account")    
+
+
+
+def RequestCompleted(request ,account_number, transaction_id):
+    try:
+        account = Account.objects.get(account_number=account_number)
+        transaction = Transaction.objects.get(transaction_id=transaction_id)
+
+    except:
+        messages.warning(request, 'Request does not exists')
+        return redirect("account:account")
+    context = {'account':account,
+               'transaction':transaction
+               } 
+    return render(request, 'payment_request/request-completed.html', context) 
 
 
 

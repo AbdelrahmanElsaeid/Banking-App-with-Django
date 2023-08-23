@@ -112,9 +112,9 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                                         </div>
                                         <div class="main-content">
-                                            <h4>Confirm Transfer!</h4>
+                                            <h4>Confirm Request!</h4>
                                             <p>We have sent a verification code on your phone + Number +44831***932. Please enter verification code below</p>
-                                            <form action="{% url 'core:transaction-process' account.account_number transaction.transaction_id %}" method="POST">
+                                            <form action="{% url 'core:request-finial-process' account.account_number transaction.transaction_id %}" method="POST">
                                                 {% csrf_token %}
                                                 <div class="userInput">
                                                     <input type="text" minlength="4" maxlength="4" name="pin-number">

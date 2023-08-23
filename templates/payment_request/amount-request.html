@@ -1,0 +1,84 @@
+
+{% extends 'partials/dashboard-base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block content %}
+    <!-- Dashboard Section start -->
+    <section class="dashboard-section body-collapse pay step step-2">
+        <div class="overlay pt-120">
+            <div class="container-fruid">
+                <div class="main-content">
+                    <div class="head-area d-flex align-items-center justify-content-between">
+                        <h4>Request a Payment</h4>
+                        <div class="icon-area">
+                            <img src="{% static 'assets1/images/icon/support-icon.png' %}" alt="icon">
+                        </div>
+                    </div>
+                    <div class="choose-recipient">
+                        <div class="step-area">
+                            <span class="mdr">Step 2 of 3</span>
+                            <h5>Set Amount of transfer</h5>
+                        </div>
+                        <div class="user-select">
+                            <div class="single-user">
+                                <div class="left d-flex align-items-center">
+                                    <div class="img-area">
+                                        <img style="width: 100px; hight: 100px; border-radius: 50%" src="{{account.user.kyc.image.url}}" alt="image">
+                                    </div>
+                                    <div class="text-area">
+                                        <p>{{account.user.kyc.full_name|title}}</p>
+                                        <p>{{account.account_number|title}}</p>
+                                        <small>{{account.user.email}}</small>
+                                    </div>
+                                </div>
+                                <div class="right">
+    
+                                    <a href="{% url 'core:request-search-user' %}">
+                                        <i class="icon-h-edit"></i>
+                                        Edit
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="{% url 'core:amount-request-Process' account.account_number %}" method = "POST">
+                        {% csrf_token %}
+                        <div class="send-banance">
+                            <span class="mdr">You Request</span>
+                            <div class="input-area">
+                                <input class="xxlr"  placeholder="Enter Amount Request " name="amount-request" type="number" id="amount-request">
+                                <select>
+                                    <option value="1">USD</option>
+                                    <option value="2">USD</option>
+                                    <option value="3">USD</option>
+                                </select>
+                            </div>
+                   
+                        </div>
+                        <div class="send-banance">
+                            <span class="mdr">Payment Decsription</span>
+                            <div class="input-area">
+                                <input class="xxlr"  placeholder="Request Money For " name="description" type="text" >
+                                <select>
+                                    <option value="1">USD</option>
+                                    <option value="2">USD</option>
+                                    <option value="3">USD</option>
+                                </select>
+                            </div>
+                          
+                        </div>
+
+
+                        <div class="footer-area mt-40">
+                            <a href="{% url 'core:request-search-user' %}">Previous Step</a>
+                            <button type="submit" style="padding: 10px 30px; border-radius: 10px; background: rgb(98, 0, 255); color: #fff;" class="active">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Dashboard Section end -->
+
+{% endblock content %}

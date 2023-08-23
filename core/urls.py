@@ -2,7 +2,7 @@ from django.urls import path
 from .views import index
 from .transfare import search_using_account, AmountTranfare, AmountTranfareProcess,TransactionConfirmation,TransfarProcess, TransfarCompleted
 from .transaction import transaction_list, transaction_detail
-from .payment_request import SearchUserRequest
+from .payment_request import SearchUserRequest, AmountRequest, AmountRequestProcess
 app_name = 'core'
 
 
@@ -27,7 +27,11 @@ urlpatterns = [
 
     #payment_request
 
-    path('request-search-user/',search_using_account, name='request-search-user' ),
+    path('request-search-user/',SearchUserRequest, name='request-search-user' ),
+    path('amount-request/<account_number>',AmountRequest, name='amount-request' ),
+    path('amount-request-process/<account_number>/',AmountRequestProcess , name='amount-request-Process'),
+
+
 
 
 ]

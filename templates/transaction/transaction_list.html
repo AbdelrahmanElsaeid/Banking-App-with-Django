@@ -199,16 +199,16 @@
                                                             <td>
                                                                 {% if s.status == "request_sent" %}
                                                                 <a href="{% url 'core:transaction-detail' s.transaction_id %}" class="btn btn-primary"><i class="fas fa-eye"></i> View</a>
-                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=" btn btn-danger"> <i class="fas fa-x"></i> Delete</a>
+                                                                <a href="{% url 'core:delete-request' s.sender.account.account_number s.transaction_id %}" class=" btn btn-danger"> <i class="fas fa-x"></i> Delete</a>
                                                                 {% endif %}
 
                                                                 {% if s.status == "request_processing" %}
                                                                 <a href="{% url 'core:transaction-detail' s.transaction_id %}" class="btn btn-primary"><i class="fas fa-eye"></i> View</a>
-                                                                <a href="{% url 'core:transaction-detail' s.transaction_id %}" class=" btn btn-danger"> <i class="fas fa-x"></i> Delete</a>
+                                                                <a href="{% url 'core:delete-request' s.sender.account.account_number s.transaction_id %}" class=" btn btn-danger"> <i class="fas fa-x"></i> Delete</a>
                                                                 {% endif %}
 
                                                                 {% if s.status == "request_settled" %}
-                                                                <a class="btn btn-success"><i class="fas fa-check-circle"></i> Settled</a>
+                                                                <a  class="btn btn-success"><i class="fas fa-check-circle"></i> Settled</a>
                                                                 {% endif %}
 
                                                             </td>

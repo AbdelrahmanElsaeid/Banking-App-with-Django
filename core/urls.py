@@ -2,7 +2,7 @@ from django.urls import path
 from .views import index
 from .transfare import search_using_account, AmountTranfare, AmountTranfareProcess,TransactionConfirmation,TransfarProcess, TransfarCompleted
 from .transaction import transaction_list, transaction_detail
-from .payment_request import SearchUserRequest, AmountRequest, AmountRequestProcess, RequestConfirmation, RequestCompleted, RequestFinialProcess
+from .payment_request import SearchUserRequest, AmountRequest, AmountRequestProcess, RequestConfirmation, RequestCompleted, RequestFinialProcess, settlement_confirmation, settlement_processing, SettlementCompleted, delete_payment_request
 app_name = 'core'
 
 
@@ -33,6 +33,10 @@ urlpatterns = [
     path('request-confirm/<account_number>/<transaction_id>/',RequestConfirmation , name='request-confirmation'),
     path('request-process/<account_number>/<transaction_id>/',RequestFinialProcess , name='request-finial-process'),
     path('request-completed/<account_number>/<transaction_id>/',RequestCompleted , name='request-completed'),
+    path('settlement-confirmation/<account_number>/<transaction_id>/', settlement_confirmation, name='settlement-confirmation'),
+    path('settlement-processing/<account_number>/<transaction_id>/',settlement_processing, name= 'settlement_processing'),
+    path('settlement-completed/<account_number>/<transaction_id>/',SettlementCompleted , name='settlement-completed'),
+    path('delete-request/<account_number>/<transaction_id>/',delete_payment_request , name='delete-request'),
 
 
 

@@ -7,6 +7,11 @@
     <section class="dashboard-section body-collapse">
         <div class="overlay pt-120">
             <div class="container-fruid">
+                {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{form.errors}}</strong>
+                    </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-xl-8 col-lg-7">
                         <div class="section-content">
@@ -330,7 +335,7 @@
                                     <div class="right-side">
                                         <div class="dropdown-area">
                                             <button type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src="assets/images/icon/option.png" alt="icon">
+                                                <img src="{% static 'assets1/images/icon/option.png' %}" alt="icon">
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                                 <li><a class="dropdown-item" href="account.html">Update</a></li>
@@ -343,35 +348,35 @@
                                     <div class="col-6">
                                         <div class="single-card">
                                             <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#cardMod">
-                                                <img src="assets/images/visa-card.png" alt="image" class="w-100">
+                                                <img src="{% static 'assets1/images/visa-card.png' %}" alt="image" class="w-100">
                                             </button>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="single-card">
                                             <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#cardMod">
-                                                <img src="assets/images/paylio-card.png" alt="image" class="w-100">
+                                                <img src="{% static 'assets1/images/paylio-card.png' %}" alt="image" class="w-100">
                                             </button>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="single-card">
                                             <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#cardMod">
-                                                <img src="assets/images/paypal-card.png" alt="image" class="w-100">
+                                                <img src="{% static 'assets1/images/paypal-card.png' %}" alt="image" class="w-100">
                                             </button>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="single-card">
                                             <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#cardMod">
-                                                <img src="assets/images/blockchain-card.png" alt="image" class="w-100">
+                                                <img src="{% static 'assets1/images/blockchain-card.png' %}" alt="image" class="w-100">
                                             </button>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="single-card">
                                             <button type="button" class="reg w-100" data-bs-toggle="modal" data-bs-target="#addcardMod">
-                                                <img src="assets/images/add-new.png" alt="image" class="w-100">
+                                                <img src="{% static 'assets1/images/add-new.png' %}" alt="image" class="w-100">
                                             </button>
                                         </div>
                                     </div>
@@ -597,35 +602,48 @@
                                     <h6>Add Card</h6>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                                 </div>
-                                <form action="#">
+                                <form action="#" method="POST">
+                                    {% csrf_token %}
                                     <div class="row justify-content-center">
                                         <div class="col-md-12">
                                             <div class="single-input">
                                                 <label for="cardNumber">Card Number</label>
-                                                <input type="text" id="cardNumber" placeholder="5890 - 6858 - 6332 - 9843">
+                                                {{form.name}}
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="single-input">
                                                 <label for="cardHolder">Card Holder</label>
-                                                <input type="text" id="cardHolder" placeholder="Alfred Davis">
+                                                {{form.number}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="single-input">
                                                 <label for="month">Month</label>
-                                                <input type="text" id="month" placeholder="12">
+                                                {{form.month}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="single-input">
                                                 <label for="year">Year</label>
-                                                <input type="text" id="year" placeholder="2025">
+                                                {{form.year}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="single-input">
+                                                <label for="year">Cvv</label>
+                                                {{form.cvv}}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="single-input">
+                                                <label for="year">Card_type</label>
+                                                {{form.card_type}}
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="btn-border w-100">
-                                                <button class="cmn-btn w-100">Add Card</button>
+                                                <button type="submit" class="cmn-btn w-100">Add Card</button>
                                             </div>
                                         </div>
                                     </div>

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import KYCForm
 from .models import KYC, Account
 from django.contrib import messages
-
+from core.forms import CreditCardForm
 # Create your views here.
 
 
@@ -73,6 +73,18 @@ def Dashboard(request):
             messages.warning(request, "You Need To Submit YOur KYC")
             return redirect("account:kyc-form")
 
+        if request.method == "POST":
+            form = CreditCardForm(request.POST)
+            if form.is_valid():
+                new_form = form.save(commit=False)
+                new_form.user = request.user
+                new_form.save()
+
+                card_id = new_form.card_id
+                messages.success(request, "Card ADDED Successfully.")
+                return redirect("account:dashboard")
+        else:
+            form = CreditCardForm()
         account = Account.objects.get(user=user)
     else:
         messages.warning(request, "You Need To Login")
@@ -80,5 +92,6 @@ def Dashboard(request):
     context = {
         'account':account,
         'kyc':kyc,
+        'form':form,
     }
     return render(request, 'account/dashboard.html', context)

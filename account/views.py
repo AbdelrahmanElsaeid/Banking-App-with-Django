@@ -3,6 +3,7 @@ from .forms import KYCForm
 from .models import KYC, Account
 from django.contrib import messages
 from core.forms import CreditCardForm
+from core.models import CreditCard
 # Create your views here.
 
 
@@ -86,6 +87,7 @@ def Dashboard(request):
         else:
             form = CreditCardForm()
         account = Account.objects.get(user=user)
+        credit_card = CreditCard.objects.filter(user=user).order_by("-id")
     else:
         messages.warning(request, "You Need To Login")
         return redirect("userauths:sign-in")
@@ -93,5 +95,6 @@ def Dashboard(request):
         'account':account,
         'kyc':kyc,
         'form':form,
+        "credit_card":credit_card,
     }
     return render(request, 'account/dashboard.html', context)

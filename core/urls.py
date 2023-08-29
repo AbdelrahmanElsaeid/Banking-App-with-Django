@@ -3,7 +3,7 @@ from .views import index
 from .transfare import search_using_account, AmountTranfare, AmountTranfareProcess,TransactionConfirmation,TransfarProcess, TransfarCompleted
 from .transaction import transaction_list, transaction_detail
 from .payment_request import SearchUserRequest, AmountRequest, AmountRequestProcess, RequestConfirmation, RequestCompleted, RequestFinialProcess, settlement_confirmation, settlement_processing, SettlementCompleted, delete_payment_request
-from .credit_card import credit_card_detail
+from .credit_card import credit_card_detail, fund_credit_card
 
 
 app_name = 'core'
@@ -43,7 +43,8 @@ urlpatterns = [
 
     # credit_card
 
-    path('card/<card_id>/', credit_card_detail, name="card_detail" )
+    path('card/<card_id>/', credit_card_detail, name="card_detail" ),
+    path('fund-credit-card/<card_id>/',fund_credit_card, name= "fund-credit-card" ),
 
 
 ]

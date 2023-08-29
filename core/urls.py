@@ -3,6 +3,9 @@ from .views import index
 from .transfare import search_using_account, AmountTranfare, AmountTranfareProcess,TransactionConfirmation,TransfarProcess, TransfarCompleted
 from .transaction import transaction_list, transaction_detail
 from .payment_request import SearchUserRequest, AmountRequest, AmountRequestProcess, RequestConfirmation, RequestCompleted, RequestFinialProcess, settlement_confirmation, settlement_processing, SettlementCompleted, delete_payment_request
+from .credit_card import credit_card_detail
+
+
 app_name = 'core'
 
 
@@ -38,7 +41,9 @@ urlpatterns = [
     path('settlement-completed/<account_number>/<transaction_id>/',SettlementCompleted , name='settlement-completed'),
     path('delete-request/<account_number>/<transaction_id>/',delete_payment_request , name='delete-request'),
 
+    # credit_card
 
+    path('card/<card_id>/', credit_card_detail, name="card_detail" )
 
 
 ]

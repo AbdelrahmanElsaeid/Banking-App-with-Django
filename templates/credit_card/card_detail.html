@@ -113,7 +113,7 @@
                                                                                         <button type="button" class="reg btn btn-success w-100 mb-2" data-bs-toggle="modal" data-bs-target="#withdraw_fund">
                                                                                             Withdraw
                                                                                         </button>  
-                                                                                        <a href="#" class="reg btn btn-danger w-100 mb-2">
+                                                                                        <a href="{% url 'core:delete-card' credit_card.card_id %}" class="reg btn btn-danger w-100 mb-2">
                                                                                             Delete Card
                                                                                         </a> 
                                                                                 </div>    
@@ -210,14 +210,14 @@
                                 <h6>Withdraw from Card</h6>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
                             </div>
-                            <form action="" method="POST">
+                            <form action="{% url 'core:withdraw-credit-card' credit_card.card_id %}" method="POST">
                                 {% csrf_token %}
                                 <div class="row justify-content-center">
                                     
                                     <div class="col-md-12">
                                         <div class="single-input">
                                             <label for="month">Card's Available Balance</label>
-                                            <input type="text" id="month" value="${{ credic_card.amount|intcomma }}">
+                                            <input type="text" id="month" value="${{ credit_card.amount|intcomma }}">
                                         </div>
                                     </div>
                                     <div class="col-md-12">

@@ -37,10 +37,51 @@ def fund_credit_card(request, card_id):
             credit_card .amount += Decimal(amount)
             credit_card.save()
 
-            messages.success(request, 'fundin Successfull')
+            messages.success(request, 'funding Successfully')
             return redirect("core:card_detail", credit_card.card_id)
 
         else:
             messages.warning(request, "Insufficient funds, fund your account and try again.")
             return redirect("core:card_detail", credit_card.card_id)
     
+
+
+def withdraw_credit_card(request, card_id):
+    account = request.user.account
+    credit_card = CreditCard.objects.get(card_id=card_id)
+
+
+    if request.method == 'POST':
+        amount = request.POST.get("amount")
+        
+        if credit_card.amount >= Decimal(amount):
+            account.account_balance += Decimal(amount)
+            account.save()
+
+            credit_card .amount -= Decimal(amount)
+            credit_card.save()
+
+            messages.success(request, 'Withdraw Successfully')
+            return redirect("core:card_detail", credit_card.card_id)
+
+        else:
+            messages.warning(request, "Insufficient funds, fund your account and try again.")
+            return redirect("core:card_detail", credit_card.card_id)
+        
+
+def delete_card(request, card_id):
+    account = request.user.account
+    credit_card = CreditCard.objects.get(card_id=card_id)
+
+    if credit_card.amount  <=0:
+        credit_card.delete()
+        messages.success(request, "Card Deleted Successfull")
+        return redirect("account:dashboard")
+
+    else:
+        account.account_balance +=  credit_card.amount 
+        account.save() 
+        credit_card.delete()
+
+        messages.success(request, "Card Deleted Successfull")
+        return redirect("account:dashboard")

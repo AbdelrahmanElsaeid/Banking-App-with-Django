@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="owner-action">
                                     <a href="javascript:void(0)">
-                                        <img src="{% static 'assets1/images/icon/logout.png' %]} alt="image">
+                                        <img src="{% static 'assets1/images/icon/logout.png' %} alt="image">
                                         Logout
                                     </a>
                                     <a href="javascript:void(0)" class="delete">
@@ -123,16 +123,20 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="single-input">
+                                                    <label for="fName">Gender</label>
                                                    {{form.gender}}
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="single-input">
-                                                   {{form.marrital_status}}
+                                                    <label for="fName">Marrital Status</label>
+        
+                                                   {{form.marital_status}}
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="single-input">
+                                                    <label for="fName">Identity Type</label>
                                                    {{form.identity_type}}
                                                 </div>
                                             </div>

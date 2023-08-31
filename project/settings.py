@@ -29,7 +29,7 @@ SECRET_KEY = "django-insecure-t1jnbks1gk$3v1!xp#r*gw-qdot^-ax&f_phn71904r3w*erdh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['banking-app-with-django-production.up.railway.app']
+#ALLOWED_HOSTS = ['banking-app-with-django-production.up.railway.app']
 
 
 # Application definition
@@ -83,26 +83,26 @@ WSGI_APPLICATION = "project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "railway",
-        'USER': "postgres",
-        'PASSWORD': "RWHf0gYmlmM4IH5rWdCX",
-        'HOST': "containers-us-west-208.railway.app",
-        'PORT': 6068,
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': "railway",
+#         'USER': "postgres",
+#         'PASSWORD': "RWHf0gYmlmM4IH5rWdCX",
+#         'HOST': "containers-us-west-208.railway.app",
+#         'PORT': 6068,
+#     }
+# }
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 
 

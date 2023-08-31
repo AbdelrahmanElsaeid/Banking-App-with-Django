@@ -129,28 +129,41 @@
                             <div class="single-item user-area">
                                 <div class="profile-area d-flex align-items-center">
                                     <span class="user-profile">
-                                        <img style="width: 40px; hight: 40px; border-radius: 50%" src="{{kyc.image.url}}" alt="image">
+                                        {% if request.user.kyc.image.url %}
+                                            <img style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" src="{{ request.user.kyc.image.url }}" alt="image">
+                                        {% else %}
+                                            <img src="{% static 'assets1/images/default.jpg' %}"  style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="">
+                                        {% endif %}                                    
                                     </span>
                                     <i class="fa-solid fa-sort-down"></i>
                                 </div>
                                 <div class="main-area user-content">
                                     <div class="head-area d-flex align-items-center">
                                         <div class="profile-img">
-                                            <img style="width: 60px; hight: 60px; border-radius: 50%" src="{{kyc.image.url}}" alt="image">
+                                            <!-- <img src="{% static 'assets1/images/avatar-2.png' %}" alt="User"> -->
+                                            
+                                            {% if request.user.kyc.image.url %}
+                                            <img style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover;" src="{{ request.user.kyc.image.url }}" alt="image">
+                                            {% else %}
+                                            <img src="{% static 'assets1/images/default.jpg' %}"  style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" alt="">
+                                            {% endif %}
+                                                
+
                                         </div>
                                         <div class="profile-head">
-                                            <a href="javascript:void(0)">
+                                            <a href="{% url 'account:account' %}">
                                                 <h5>{{kyc.full_name|title}}</h5>
                                             </a>
-                                            <small class="wallet-id">Account No: {{account.account_number}}</small>
+                                            <p class="wallet-id"><small>Account No. {{ request.user.account.account_number }}</small></p>
+                                            <p class="wallet-id"><small>Pin No. {{ request.user.account.pin_number }}</small></p>
                                         </div>
                                     </div>
                                     <ul>
                                         <li class="border-area">
-                                            <a href="account.html"><i class="fas fa-cog"></i>Settings</a>
+                                            <a href="{% url 'account:dashboard' %}"><i class="fas fa-user"></i>Dashboard</a>
                                         </li>
-                                        <li>
-                                            <a href="/admin"><i class="fas fa-sign-out"></i>Admin</a>
+                                        <li class="border-area">
+                                            <a href="javascript:void(0)"><i class="fas fa-cog"></i>Settings</a>
                                         </li>
                                         <li>
                                             <a href="{% url 'userauths:sign-out' %}"><i class="fas fa-sign-out"></i>Logout</a>
@@ -179,7 +192,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="pay.html">
+                                <a href="{% url 'core:search-account' %}">
                                     <img src="{% static 'assets1/images/icon/pay.png' %}" alt="Pay"> <span>Pay</span>
                                 </a>
                             </li>
@@ -216,7 +229,7 @@
                         </ul>
                         <ul class="bottom-item">
                             <li class="active">
-                                <a href="account.html">
+                                <a href="{% url 'account:account' %}">
                                     <img src="{% static 'assets1/images/icon/account.png' %}" alt="Account"> <span>Account</span>
                                 </a>
                             </li>

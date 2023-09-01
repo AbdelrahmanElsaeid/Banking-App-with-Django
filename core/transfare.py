@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from account.models import Account
 from django.db.models import Q
-from .models import Transaction
+from .models import Transaction, Notification
 from decimal import Decimal
 
 
@@ -131,6 +131,19 @@ def TransfarProcess(request,account_number, transaction_id):
             reciver_account.account_balance += transaction.amount
             reciver_account.save()
 
+
+            Notification.objects.create(
+                amount=transaction.amount,
+                user=account.user,
+                notification_type="Credit Alert"
+            )
+            
+            Notification.objects.create(
+                user=sender,
+                notification_type="Debit Alert",
+                amount=transaction.amount
+            )
+
             messages.success(request, "Transfar Successfull.")
             return redirect("core:transfar-completed" ,account.account_number ,transaction.transaction_id)
         else:
@@ -151,6 +164,7 @@ def TransfarCompleted(request ,account_number, transaction_id):
     except:
         messages.warning(request, 'Transfare does not exists')
         return redirect("account:account")
+    
     context = {'account':account,
                'transaction':transaction
                } 

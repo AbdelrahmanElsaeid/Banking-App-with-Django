@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from account.models import Account
 from django.db.models import Q
-from .models import Transaction
+from .models import Transaction, Notification
 from django.contrib.auth.decorators import login_required
 from decimal import Decimal
 
@@ -122,6 +122,19 @@ def RequestFinialProcess(request,account_number, transaction_id):
 
             transaction.status = "request_sent"
             transaction.save()
+
+            Notification.objects.create(
+                user=account.user,
+                notification_type="Recieved Payment Request",
+                amount=transaction.amount,
+                
+            )
+            
+            Notification.objects.create(
+                user=request.user,
+                amount=transaction.amount,
+                notification_type="Sent Payment Request"
+            )
             messages.success(request, "Request Successfull.")
             return redirect("core:request-completed" ,account.account_number ,transaction.transaction_id)
         else:

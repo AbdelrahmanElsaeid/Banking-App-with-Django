@@ -67,62 +67,48 @@
                                 <div class="main-area notifications-content">
                                     <div class="head-area d-flex justify-content-between">
                                         <h5>Notifications</h5>
-                                        <span class="mdr">4</span>
+                                        <span class="mdr">{{ notifications.count }}</span>
+
                                     </div>
                                     <ul>
+                                        {% for n in notifications %}
                                         <li>
+                                            
                                             <a href="javascript:void(0)" class="d-flex">
-                                                <div class="img-area">
-                                                    <img src="{% static 'assets1/images/user-1.png' %}" class="max-un" alt="image">
-                                                </div>
                                                 <div class="text-area">
-                                                    <p class="mdr">You received a payment of <b>$134.00</b> from <b>Anna
-                                                            Green</b></p>
-                                                    <p class="mdr time-area">09.39AM</p>
+                                                    
+                                                    {% if n.notification_type == "Credit Alert" %}
+                                                    <p class="mdr">You received a payment of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Debit Alert" %}
+                                                    <p class="mdr">You sent a payment of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Sent Payment Request" %}
+                                                    <p class="mdr">You sent a <b>payment request</b> of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Recieved Payment Request" %}
+                                                    <p class="mdr">You received a <b>payment request</b> of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Funded Credit Card" %}
+                                                    <p class="mdr">You funded your credit card with <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Withdrew Credit Card Funds" %}
+                                                    <p class="mdr">You withdrew <b>${{n.amount}}</b> from your credit card</p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Deleted Credit Card" %}
+                                                    <p class="mdr">You deleted your credit card</p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Added Credit Card" %}
+                                                    <p class="mdr">You added a new  credit card</p>
+                                                    {% endif %}
+                                                        
+                                                    <p class="mdr time-area">{{n.date}}</p>
                                                 </div>
                                             </a>
                                             <i class="fa-solid fa-caret-right"></i>
                                         </li>
-                                        <li>
-                                            <a href="javascript:void(0)" class="d-flex">
-                                                <div class="img-area">
-                                                    <img src="{% static 'assets1/images/user-2.png' %}" class="max-un" alt="image">
-                                                </div>
-                                                <div class="text-area">
-                                                    <p class="mdr"><b>James Deed</b> requested a payment of
-                                                        <b>£890.00</b>
-                                                    </p>
-                                                    <p class="mdr time-area">08.09AM</p>
-                                                </div>
-                                            </a>
-                                            <i class="fa-solid fa-caret-right"></i>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)" class="d-flex">
-                                                <div class="img-area">
-                                                    <img src="{% static 'assets1/images/master-card.png' %}" class="max-un" alt="image">
-                                                </div>
-                                                <div class="text-area">
-                                                    <p class="mdr">Your new payment method has beed added successfully
-                                                    </p>
-                                                    <p class="mdr time-area">09.39AM</p>
-                                                </div>
-                                            </a>
-                                            <i class="fa-solid fa-caret-right"></i>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:void(0)" class="d-flex">
-                                                <div class="img-area">
-                                                    <img src="{% static 'assets1/images/user-3.png' %}" class="max-un" alt="image">
-                                                </div>
-                                                <div class="text-area">
-                                                    <p class="mdr">You received a payment of <b>$250.00</b> from Goerge Michael
-                                                    </p>
-                                                    <p class="mdr time-area">Yesterday</p>
-                                                </div>
-                                            </a>
-                                            <i class="fa-solid fa-caret-right"></i>
-                                        </li>
+                                        {% endfor %}
+
                                     </ul>
                                 </div>
                             </div>

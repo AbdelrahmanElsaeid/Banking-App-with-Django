@@ -430,65 +430,50 @@
                             </div>
                             <div class="single-item">
                                 <div class="section-text d-flex align-items-center justify-content-between">
-                                    <h6>Recipients</h6>
+                                    <h6>Notification ({{notifications.count}})</h6>
                                     <div class="view-all d-flex align-items-center">
                                         <a href="javascript:void(0)">View All</a>
-                                        <img src="assets/images/icon/right-arrow.png" alt="icon">
+                                        <img src="{% static 'assets1/images/icon/right-arrow.png' %}" alt="icon">
                                     </div>
                                 </div>
                                 <ul class="recipients-item">
-                                    <li>
-                                        <p class="left d-flex align-items-center">
-                                            <img src="assets/images/recipients-1.png" alt="icon">
-                                            <span class="info">
-                                                <span>Phil King</span>
-                                            <span>08:00 AM — 19 August</span>
-                                            </span>
-                                        </p>
-                                        <p class="right">
-                                            <span> +$345</span>
-                                            <span>Payment</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="left d-flex align-items-center">
-                                            <img src="assets/images/recipients-2.png" alt="icon">
-                                            <span class="info">
-                                                <span>Debra Wilson</span>
-                                            <span>08:00 AM — 19 August</span>
-                                            </span>
-                                        </p>
-                                        <p class="right">
-                                            <span class="loss">-$850</span>
-                                            <span>Refund</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="left d-flex align-items-center">
-                                            <img src="assets/images/recipients-3.png" alt="icon">
-                                            <span class="info">
-                                                <span>Philip Henry</span>
-                                            <span>08:00 AM — 19 August</span>
-                                            </span>
-                                        </p>
-                                        <p class="right">
-                                            <span>+$2.050</span>
-                                            <span>Payment</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p class="left d-flex align-items-center">
-                                            <img src="assets/images/recipients-4.png" alt="icon">
-                                            <span class="info">
-                                                <span>Erin Garcia</span>
-                                            <span>08:00 AM — 19 August</span>
-                                            </span>
-                                        </p>
-                                        <p class="right">
-                                            <span> +$900</span>
-                                            <span>Payment</span>
-                                        </p>
-                                    </li>
+                                    {% for n in notifications %}
+                                        <li>
+                                            
+                                            <a href="javascript:void(0)" class="d-flex">
+                                                <div class="text-area">
+                                                    
+                                                    {% if n.notification_type == "Credit Alert" %}
+                                                    <p class="mdr">You received a payment of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Debit Alert" %}
+                                                    <p class="mdr">You sent a payment of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Sent Payment Request" %}
+                                                    <p class="mdr">You sent a <b>payment request</b> of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Recieved Payment Request" %}
+                                                    <p class="mdr">You received a <b>payment request</b> of <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Funded Credit Card" %}
+                                                    <p class="mdr">You funded your credit card with <b>${{n.amount}}</b></p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Withdrew Credit Card Funds" %}
+                                                    <p class="mdr">You withdrew <b>${{n.amount}}</b> from your credit card</p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Deleted Credit Card" %}
+                                                    <p class="mdr">You deleted your credit card</p>
+                                                    {% endif %}
+                                                    {% if n.notification_type == "Added Credit Card" %}
+                                                    <p class="mdr">You added a new  credit card</p>
+                                                    {% endif %}
+                                                        
+                                                    <p class="mdr time-area">{{n.date}}</p>
+                                                </div>
+                                            </a>
+                                            <i class="fa-solid fa-caret-right"></i>
+                                        </li>
+                                        {% endfor %}
                                 </ul>
                             </div>
                         </div>

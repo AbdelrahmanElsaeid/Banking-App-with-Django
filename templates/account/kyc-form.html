@@ -16,34 +16,45 @@
                             <div class="owner-details">
                                 <div class="profile-area">
                                     <div class="profile-img">
-                                        <img src="{% static 'assets1/images/owner-profile.png' %}" alt="image">
+                                        <img style="width: 100px; hight: 100px; border-radius: 50%" src="{{kyc.image.url}}" alt="image">
                                     </div>
                                     <div class="name-area">
-                                        <h6>Alfred Davis</h6>
-                                        <p class="active-status">Active</p>
+                                        <h6>{{kyc.full_name|title}}</h6>
+                                        {% if account.account_status == "in-active" %}
+                                        <p class="active-status text danger">{{account.account_status|title}}</p>
+                                        {% endif %}
+                                        {% if account.account_status == "active" %}
+                                        <p class="active-status ">{{account.account_status|title}}</p>
+                                        {% endif %}
+                                        {% if account.account_status == "pending" %}
+                                        <p class="active-status text warning">{{account.account_status|title}}</p>
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="owner-info">
                                     <ul>
                                         <li>
-                                            <p>Account ID:</p>
-                                            <span class="mdr">Rex49484</span>
+                                            <p>Account Num:</p>
+                                            <span class="mdr">{{account.account_number}}</span>
+                                        </li>
+                                        <li>
+                                            <p>Pin Num:</p>
+                                            <span class="mdr">{{account.pin_number}}</span>
                                         </li>
                                         <li>
                                             <p>Joined:</p>
-                                            <span class="mdr">Aug 25,2021</span>
+                                            <span class="mdr">{{account.date|date:"d M, Y" }}</span>
                                         </li>
-                                        <li>
-                                            <p>Confirm status:</p>
-                                            <span class="mdr">80%</span>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                                 <div class="owner-action">
-                                    <a href="javascript:void(0)">
-                                        <img src="{% static 'assets1/images/icon/logout.png' %} alt="image">
-                                        Logout
-                                    </a>
+                                    {% if request.user.is_authenticated %}
+                                        <a href="{%  url 'userauths:sign-out' %}">
+                                            <img src="{% static 'assets1/images/icon/logout.png' %}" alt="image">
+                                            Logout
+                                        </a>
+                                    {% endif %}
                                     <a href="javascript:void(0)" class="delete">
                                         <img src="{% static 'assets1/images/icon/delete-2.png' %}" alt="image">
                                         Delete Account

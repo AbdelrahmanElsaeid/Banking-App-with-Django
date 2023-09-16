@@ -18,6 +18,5 @@
 
 ### teck Stack :
   - python
-  - django (lts)
-  - Django Rest Framework
+  - Django  
   - Ajax    

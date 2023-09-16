@@ -10,6 +10,11 @@
   - Send Money to Credit/Debit Card for Online purchase or Payments
   - Withdraw money from Credit/Debit Card to Account Balance
   - Advanced User Authentication (Login, Logout, Register)
+  - Delete the linked credit cards and send the remaining funds back to the account balance.
+  - Notification System
+  - Tracking of Transaction History
+  - Host our website on railway hosting. 
+
 
 ### teck Stack :
   - python
